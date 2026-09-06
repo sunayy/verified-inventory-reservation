@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "generate:traces": "./scripts/generate-traces.sh",
+    "build:lean-native": "./scripts/build-lean-native.sh",
+    "verify:lean": "./scripts/verify-lean.sh",
+    "verify:spec": "./scripts/verify-spec.sh"
+  },
+  "devDependencies": {
+    "@informalsystems/quint": "0.31.0"
+  }
+}

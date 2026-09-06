@@ -1,0 +1,9 @@
+node_modules/
+.quint/
+_apalache-out/
+verified/.lake/
+backend/.gradle/
+backend/build/
+frontend/dist/
+spec/traces/*.itf.json
+spec/traces/generation.json

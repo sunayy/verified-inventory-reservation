@@ -1,0 +1,38 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  mechanical-checks:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.18.0
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 24.0.1
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: verified
+          auto-config: false
+          use-mathlib-cache: false
+      - run: npm ci
+      - run: npm --prefix frontend ci
+      - run: make verify
+      - name: Preserve generated traces after a failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failing-itf-traces
+          path: spec/traces/
+          if-no-files-found: ignore

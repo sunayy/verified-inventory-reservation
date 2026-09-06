@@ -1,0 +1,43 @@
+{
+  "#meta": { "format": "ITF", "source": "spec/inventory.qnt" },
+  "vars": ["onHand", "reserved", "sold", "orders", "orderSku", "orderQuantity", "mbt::actionTaken", "mbt::nondetPicks"],
+  "states": [
+    {
+      "#meta": { "index": 0 },
+      "mbt::actionTaken": "init",
+      "mbt::nondetPicks": {},
+      "onHand": { "#map": [["sku-blue", {"#bigint":"4"}], ["sku-red", {"#bigint":"5"}]] },
+      "reserved": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"0"}]] },
+      "sold": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"0"}]] },
+      "orders": { "#map": [["order-1", {"tag":"Missing", "value":{"#tup":[]}}]] },
+      "orderSku": { "#map": [["order-1", "sku-red"]] },
+      "orderQuantity": { "#map": [["order-1", {"#bigint":"0"}]] }
+    },
+    {
+      "#meta": { "index": 1 },
+      "mbt::actionTaken": "createOrder",
+      "mbt::nondetPicks": {
+        "orderId": {"tag":"Some", "value":"order-1"},
+        "sku": {"tag":"Some", "value":"sku-red"},
+        "quantity": {"tag":"Some", "value":{"#bigint":"3"}}
+      },
+      "onHand": { "#map": [["sku-blue", {"#bigint":"4"}], ["sku-red", {"#bigint":"5"}]] },
+      "reserved": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"0"}]] },
+      "sold": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"0"}]] },
+      "orders": { "#map": [["order-1", {"tag":"Draft", "value":{"#tup":[]}}]] },
+      "orderSku": { "#map": [["order-1", "sku-red"]] },
+      "orderQuantity": { "#map": [["order-1", {"#bigint":"3"}]] }
+    },
+    {
+      "#meta": { "index": 2 },
+      "mbt::actionTaken": "reserve",
+      "mbt::nondetPicks": { "orderId": {"tag":"Some", "value":"order-1"} },
+      "onHand": { "#map": [["sku-blue", {"#bigint":"4"}], ["sku-red", {"#bigint":"5"}]] },
+      "reserved": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"3"}]] },
+      "sold": { "#map": [["sku-blue", {"#bigint":"0"}], ["sku-red", {"#bigint":"0"}]] },
+      "orders": { "#map": [["order-1", {"tag":"Reserved", "value":{"#tup":[]}}]] },
+      "orderSku": { "#map": [["order-1", "sku-red"]] },
+      "orderQuantity": { "#map": [["order-1", {"#bigint":"3"}]] }
+    }
+  ]
+}
