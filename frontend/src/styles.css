@@ -1,0 +1,70 @@
+:root {
+  font-family: Inter, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  color: #172033;
+  background: #f4f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .45; }
+
+.app-shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 64px; }
+.app-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 0; font-size: clamp(1.7rem, 4vw, 2.45rem); letter-spacing: -.045em; }
+h2 { margin-bottom: 0; font-size: 1.15rem; }
+.eyebrow { margin-bottom: 7px; color: #62708a; font-size: .72rem; font-weight: 800; letter-spacing: .11em; }
+
+.sku-picker { display: flex; gap: 8px; margin-bottom: 22px; }
+.sku { border: 1px solid #d6ddea; border-radius: 999px; padding: 8px 14px; color: #526078; background: #fff; font-weight: 700; }
+.sku.active { border-color: #285de9; color: #fff; background: #285de9; }
+
+.stock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.metric, .panel { border: 1px solid #e0e6f0; border-radius: 16px; background: #fff; box-shadow: 0 8px 28px rgb(36 59 104 / 6%); }
+.metric { min-height: 136px; padding: 20px; border-top: 4px solid #9eabc2; }
+.metric.success { border-top-color: #1c9b70; }
+.metric.warning { border-top-color: #de8b23; }
+.metric p { margin-bottom: 12px; color: #66748e; font-size: .85rem; font-weight: 700; }
+.metric strong { display: block; color: #172033; font-size: 2.05rem; line-height: 1; }
+.metric span { color: #8591a7; font-size: .78rem; }
+
+.notice { margin: 20px 0; border-radius: 10px; padding: 13px 15px; font-weight: 650; }
+.notice.success { color: #096540; background: #e5f7ef; }
+.notice.error { color: #a32929; background: #ffeded; }
+.workspace { display: grid; grid-template-columns: minmax(280px, .85fr) minmax(360px, 1.15fr); gap: 18px; margin-top: 22px; }
+.panel { padding: 25px; }
+.panel-heading { margin-bottom: 23px; }
+.panel label { display: grid; gap: 7px; margin: 14px 0; color: #43516a; font-size: .86rem; font-weight: 750; }
+input { width: 100%; border: 1px solid #cbd5e5; border-radius: 9px; padding: 11px 12px; color: #172033; background: #fff; outline: none; }
+input:focus { border-color: #285de9; box-shadow: 0 0 0 3px #dce7ff; }
+input[readonly] { color: #64718a; background: #f6f8fb; }
+.primary-button, .secondary-button, .danger-button, .text-button { border-radius: 9px; padding: 10px 14px; font-weight: 750; }
+.primary-button { border: 1px solid #285de9; color: #fff; background: #285de9; }
+.secondary-button { border: 1px solid #bfc9db; color: #26344e; background: #fff; }
+.danger-button { border: 1px solid #efc0c0; color: #b32626; background: #fff5f5; }
+.text-button { width: 100%; margin-top: 10px; border: 0; color: #285de9; background: transparent; }
+.order-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 0 0 24px; }
+.order-details div { border-radius: 10px; padding: 11px; background: #f6f8fc; }
+dt { color: #77839a; font-size: .73rem; font-weight: 700; }
+dd { margin: 5px 0 0; color: #25334c; font-weight: 750; overflow-wrap: anywhere; }
+.status { display: inline-block; border-radius: 999px; padding: 4px 8px; font-size: .78rem; }
+.status.draft { color: #765412; background: #fff5d9; }
+.status.reserved { color: #155d93; background: #e1f2ff; }
+.status.confirmed { color: #0a7149; background: #dff7ec; }
+.status.cancelled { color: #6e7580; background: #eceff3; }
+.action-row { display: flex; flex-wrap: wrap; gap: 9px; }
+.helper, .empty-state { color: #748096; font-size: .88rem; line-height: 1.6; }
+
+@media (max-width: 760px) {
+  .app-shell { width: min(100% - 24px, 1120px); padding-top: 28px; }
+  .app-header { align-items: flex-start; flex-direction: column; }
+  .stock-grid, .workspace { grid-template-columns: 1fr 1fr; }
+  .workspace { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 430px) {
+  .stock-grid, .order-details { grid-template-columns: 1fr; }
+}

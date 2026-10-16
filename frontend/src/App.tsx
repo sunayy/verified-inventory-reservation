@@ -1,5 +1,3 @@
-import { ScreenRenderer } from "./interpreter/ScreenRenderer"
-import { ReadOnly } from "./dsl/capabilities"
-import { inventoryReadOnly } from "./features/inventoryReadOnly"
+import { InventoryDashboard } from "./interpreter/InventoryDashboard"
 
-export const App = () => <ScreenRenderer screen={inventoryReadOnly} capability={ReadOnly} />
+export const App = () => <InventoryDashboard />
